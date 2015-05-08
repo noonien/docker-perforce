@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -x
 
 for config in P4PORT P4USER P4PASSWD P4TOKEN; do
     if [ -z "${!config:-}" ]; then
@@ -51,17 +52,28 @@ sed -i 's/\(serverHost\)=.*/\1='$HOST'/' jetty/resources/search.config
 sed -i 's/\(serverPort\)=.*/\1='$PORT'/' jetty/resources/search.config
 sed -i 's/\(indexerUser\)=.*/\1='$P4USER'/' jetty/resources/search.config
 sed -i 's/\(indexerPassword\)=.*/\1='$P4PASSWD'/' jetty/resources/search.config
-if [ ! -z '$P4CHARSET' ]; then
+if [ ! -z "$P4CHARSET" ]; then
     sed -i 's/\(serverCharset\)=.*/\1='$P4CHARSET'/' jetty/resources/search.config
+fi
+if [ ! -z "$P4COMMONSURL" ]; then
+    sed -i 's>^\(# \|\)\(com.perforce.search.commonsURL\)=.*>\2='$P4COMMONSURL'>' jetty/resources/search.config
+fi
+if [ ! -z "$P4WEBURL" ]; then
+    sed -i 's>^\(# \|\)\(com.perforce.search.webURL\)=.*>\2='$P4WEBURL'>' jetty/resources/search.config
+fi
+if [ ! -z "$P4SWARMURL" ]; then
+    sed -i 's>^\(# \|\)\(com.perforce.search.swarmURL\)=.*>\2='$P4SWARMURL'>' jetty/resources/search.config
 fi
 
 # Token
-sed -i 's/^\(# |\)\(com.perforce.search.fileScannerToken\)/\2/' jetty/resources/search.config
+sed -i 's/^# \(com.perforce.search.fileScannerToken\)/\1/' jetty/resources/search.config
 sed -i 's/\(searchEngineToken\)=.*/\1='$P4TOKEN'/' jetty/resources/search.config
 
 ## Solr config
 sed -i 's/^JPORT=.*/JPORT=8983/' solr/example/solr-control.sh
 sed -i 's/^STOP=.*/STOP=8984/' solr/example/solr-control.sh
+
+bash
 
 # Start solr and jetty/p4search
 solr/example/solr-control.sh start
