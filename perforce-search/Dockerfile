@@ -4,8 +4,8 @@ MAINTAINER George Jiglau <george@mux.ro>
 RUN apt-get install -y perforce-cli default-jre-headless
 
 RUN wget -q -O- http://www.perforce.com/downloads/perforce/r14.1/bin.java/p4search.tgz | tar zx -C /opt \
-    && mv /opt/p4search-2014.1.828661 /opt/perforce-search \
-    && cd /opt/perforce-search \
+    && mv /opt/p4search-2014.1.828661 /opt/perforce/search \
+    && cd /opt/perforce/search \
     && mv jetty jetty-config \
     && tar zxf solr-4.5.1.tgz \
     && tar zxf jetty-distribution-8.1.14.v20131031.tar.gz \

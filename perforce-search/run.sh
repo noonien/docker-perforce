@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-set -x
 
 for config in P4PORT P4USER P4PASSWD P4TOKEN; do
     if [ -z "${!config:-}" ]; then
@@ -25,7 +24,7 @@ if ! echo $P4PASSWD | p4 login > /dev/null; then
     exit 1
 fi
 
-cd /opt/perforce-search
+cd /opt/perforce/search
 
 # Configure files
 ## Server connection details
@@ -72,8 +71,6 @@ sed -i 's/\(searchEngineToken\)=.*/\1='$P4TOKEN'/' jetty/resources/search.config
 ## Solr config
 sed -i 's/^JPORT=.*/JPORT=8983/' solr/example/solr-control.sh
 sed -i 's/^STOP=.*/STOP=8984/' solr/example/solr-control.sh
-
-bash
 
 # Start solr and jetty/p4search
 solr/example/solr-control.sh start
