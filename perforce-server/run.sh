@@ -34,7 +34,7 @@ if [ ! -f $CONFIG_ROOT/$SERVER_NAME.conf ]; then
         $SERVER_NAME
 
     echo Server info:
-    p4 info
+    p4 -p $P4PORT info
 else
     # Configuring the server also starts it, if we've not just configured a
     # server, we need to start it ourselves.
