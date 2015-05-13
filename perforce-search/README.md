@@ -7,7 +7,7 @@ This is a docker image for the [Perforce Search](http://www.perforce.com/).
 Usage
 -----
 
-    docker run -e search_NAME=search-name -e P4PASSWD=<password> noonien/perforce-search
+    docker run -e P4PORT=<p4port> -e P4USER=<user> -e P4PASSWD=<password> -e P4TOKEN=<token> noonien/perforce-search
 
 Details
 -------
@@ -18,3 +18,6 @@ The following environment variables are available:
   - P4PASSWD - Superuser password. Required when creating a new search. Required.
   - P4TOKEN - Token to use when receving pushes from perforce. Required.
   - P4CHARSET - Server charset. Optional.
+  - P4COMMONSURL - Commons URL. Optional.
+  - P4WEBURL - Perforce Web URL. Optional.
+  - P4SWARMURL - Perforce Swarm URL. Optional

@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 for config in P4PORT P4USER P4PASSWD P4TOKEN; do
     if [ -z "${!config:-}" ]; then
