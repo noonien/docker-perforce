@@ -2,10 +2,11 @@ FROM noonien/perforce-base
 MAINTAINER George Jiglau <george@mux.ro>
 
 # Install the perforce server
-RUN apt-get install -y perforce-server
+RUN apt-get install -y perforce-server curl
 
-# Server roots are stored here
+# Volumes for server roots and triggers
 VOLUME /opt/perforce/servers
+VOLUME /opt/perforce/triggers
 
 # Add startup file and run it by default
 COPY run.sh /
