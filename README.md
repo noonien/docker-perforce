@@ -8,8 +8,8 @@ Details
 -------
 This collection currently includes:
 
-  - perforce-base - Base container, includes the Perforce APT repositories.
-  - perforce-server - Perforce Helix Server container.
+  - [perforce-base](perforce-base) - Base container, includes the Perforce APT repositories.
+  - [perforce-server](perforce-server/) - Perforce Helix Server container.
 
 
 Contributing

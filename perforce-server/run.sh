@@ -20,12 +20,12 @@ fi
 P4USER=${P4USER:-p4admin}
 P4PORT=${P4PORT:-ssl:1666}
 
+SERVER_ROOT=$SERVERS_ROOT/$SERVER_NAME
 # Check if the server was configured. If not, configure it.
 if [ ! -f $CONFIG_ROOT/$SERVER_NAME.conf ]; then
     echo Perforce server $SERVER_NAME not configured, configuring.
 
     # If the root path already exists, we're configuring an existing server
-    SERVER_ROOT=$SERVERS_ROOT/$SERVER_NAME
     $CONFIGURE_SCRIPT -n \
         -r $SERVER_ROOT \
         -p $P4PORT \
@@ -43,4 +43,4 @@ fi
 
 # Pipe server log and wait until the server dies
 PID_FILE=/var/run/p4d.$SERVER_NAME.pid
-exec /usr/bin/tail --pid=$(cat $PID_FILE) -n 0 -f "$SERVER_ROOT/log"
+exec /usr/bin/tail --pid=$(cat $PID_FILE) -n 0 -f "$SERVER_ROOT/logs/log"

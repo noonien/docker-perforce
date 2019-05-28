@@ -16,6 +16,6 @@ The following environment variables are available:
   - SERVER_NAME - Server name. Required.
   - P4PORT - Address on which to listen. Described [here](http://www.perforce.com/perforce/doc.current/manuals/cmdref/P4PORT.html). Defaults to ssl:1666.
   - P4USER - Superuser username. Only created when creating a new server. Defaults to perforce.
-  - P4PASSWd - Superuser password. Required when creating a new server.
+  - P4PASSWD - Superuser password. Required when creating a new server.
 
 The path `/opt/perforce/server` is mounted as a volume because that's where the server roots are stored.
