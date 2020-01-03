@@ -7,7 +7,7 @@ This is a docker image for the [Perforce Helix Server](http://www.perforce.com/)
 Usage
 -----
 
-    docker run -e SERVER_NAME=server-name -e P4PASSWD=<password> noonien/perforce-server
+    docker run -e SERVER_NAME=server-name -e P4PASSWD=<password> -p 1666:1666 noonien/perforce-server
 
 Details
 -------
