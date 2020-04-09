@@ -9,5 +9,8 @@ apt-get update && apt-get install -y helix-p4d=2019.2-1942501~bionic && \
 rm -rf /var/log/* && \
 rm -rf /var/lib/apt/lists/*
 
+VOLUME /opt/perforce/servers
+VOLUME /opt/perforce/triggers
+
 COPY run.sh /
 CMD ["/run.sh"]

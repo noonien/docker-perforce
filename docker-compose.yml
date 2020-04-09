@@ -13,7 +13,8 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - /mnt/dockervolumes/perforce:/opt/perforce
+      - /mnt/dockervolumes/perforce/servers:/opt/perforce/servers
+      - /mnt/dockervolumes/perforce/triggers:/opt/perforce/triggers
     ports:
       - "${P4PORTNUM:-1666}:${P4PORTNUM:-1666}"
     networks:
