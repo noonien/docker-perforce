@@ -6,9 +6,7 @@ CONFIGURE_SCRIPT=/opt/perforce/sbin/configure-helix-p4d.sh
 SERVERS_ROOT=/opt/perforce/servers
 CONFIG_ROOT=/etc/perforce/p4dctl.conf.d
 
-chmod +x $CONFIGURE_SCRIPT
-
-# These need to be defined
+# Theese need to be defined
 if [ -z "$SERVER_NAME" ]; then
     echo FATAL: SERVER_NAME not defined 1>&2
     exit 1;
