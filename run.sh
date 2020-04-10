@@ -2,7 +2,7 @@
 set -e
 
 # Perforce paths
-CONFIGURE_SCRIPT=/opt/perforce/sbin/configure-perforce-server.sh
+CONFIGURE_SCRIPT=/opt/perforce/sbin/configure-helix-p4d.sh
 SERVERS_ROOT=/opt/perforce/servers
 CONFIG_ROOT=/etc/perforce/p4dctl.conf.d
 

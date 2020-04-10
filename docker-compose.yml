@@ -1,0 +1,24 @@
+version: "3"
+services:
+  perforce:
+    restart: always
+    container_name: "perforce-server"
+    environment:
+      DEBIAN_FRONTEND: noninteractive
+      P4USER: ${P4USER:-p4admin}
+      P4PORT: ${P4PORT:-ssl:1666}
+      P4PASSWD: ${P4PASSWD:-PLEASEdontForgetTOsetASTRONGpw337723817290}
+      SERVER_NAME: ${SERVER_NAME:-p4dsrv}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ${P4DOCKERVOL:-/mnt/dockervolumes/perforce}/servers:/opt/perforce/servers
+      - ${P4DOCKERVOL:-/mnt/dockervolumes/perforce}/triggers:/opt/perforce/triggers
+    ports:
+      - "${P4PORTNUM:-1666}:${P4PORTNUM:-1666}"
+    networks:
+      - perforce-network
+networks:
+  perforce-network:
+    driver: bridge
